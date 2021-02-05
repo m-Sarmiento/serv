@@ -98,8 +98,10 @@ module serv_rf_ram_if
 	wgo <= 1'b0;
 
       if (i_rst) begin
-	 if (reset_strategy != "NONE")
+	 if (reset_strategy != "NONE") begin
 	   wcnt <= 5'd0;
+	   wgo <= 1'b0; 
+	 end
       end
    end
 
