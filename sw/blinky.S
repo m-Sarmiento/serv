@@ -9,7 +9,7 @@
 #endif
 
 #ifndef DELAY
-#define DELAY 0x100000 /* Loop 100000 times before inverting the LED */
+#define DELAY 0x1000 /* Loop 100000 times before inverting the LED */
 #endif
 	
 	/*
@@ -23,15 +23,16 @@
 .globl _start
 _start:
 	/* Load GPIO base address to a0 */
-	lui a0, %hi(GPIO_BASE)
-	addi a0, a0, %lo(GPIO_BASE)
-
+	lui s2, %hi(GPIO_BASE)
+	addi s2, s2, %lo(GPIO_BASE)
+	
+		
 	/* Set timer value to control blink speed */
 	li t1, DELAY
 
 bl1:
 	/* Write to LEDs */
-	sb t0, 0(a0)
+	sb t0, 0(s2)
 
 	/* invert LED */
 	xori t0, t0, 1
