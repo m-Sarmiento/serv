@@ -10,7 +10,7 @@
 
 // Author: Florian Zaruba <zarubaf@iis.ee.ethz.ch>
 
-module fifo_v2 #(
+module fifo_v2_serv #(
     parameter bit          FALL_THROUGH = 1'b0, // fifo is in fall-through mode
     parameter int unsigned DATA_WIDTH   = 32,   // default data width if the fifo is of type logic
     parameter int unsigned DEPTH        = 8,    // depth can be arbitrary from 0 to 2**32
@@ -48,12 +48,12 @@ module fifo_v2 #(
         assign alm_empty_o  = (usage <= ALM_EMPTY_TH[ADDR_DEPTH-1:0]);
     end
 
-    fifo_v3 #(
+    fifo_v3_serv #(
         .FALL_THROUGH ( FALL_THROUGH ),
         .DATA_WIDTH   ( DATA_WIDTH   ),
         .DEPTH        ( DEPTH        ),
         .dtype        ( dtype        )
-    ) i_fifo_v3 (
+    ) i_fifo_v3_serv (
         .clk_i,
         .rst_ni,
         .flush_i,
@@ -76,4 +76,4 @@ module fifo_v2 #(
     `endif
     // pragma translate_on
 
-endmodule // fifo_v2
+endmodule // fifo_v2_serv

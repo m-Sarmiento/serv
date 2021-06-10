@@ -16,7 +16,7 @@
 *
 */
 
-module dm_mem #(
+module dm_mem_serv #(
   parameter int unsigned        NrHarts          =  1,
   parameter int unsigned        BusWidth         = 32,
   parameter logic [NrHarts-1:0] SelectableHarts  = {NrHarts{1'b1}},
@@ -471,7 +471,7 @@ module dm_mem #(
   // two registers per hart, hence we also need
   // two scratch registers.
   if (HasSndScratch) begin : gen_rom_snd_scratch
-    debug_rom i_debug_rom (
+    debug_rom_serv i_debug_rom_serv (
       .clk_i,
       .req_i,
       .addr_i  ( rom_addr  ),
@@ -517,4 +517,4 @@ module dm_mem #(
     end
   end
 
-endmodule : dm_mem
+endmodule : dm_mem_serv

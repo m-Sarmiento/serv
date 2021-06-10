@@ -234,13 +234,13 @@ module servant
       .o_wb_rdt (wb_mem_rdt),
       .o_wb_ack (wb_mem_ack));
 	  
- 	 dm_wrapper
+ 	 dm_wrapper_serv
 	#(.NrHarts (1),
        .BusWidth (32),
        .DmBaseAddress ('h1000),
        .SelectableHarts (1'b1),
        .ReadByteEnable (1))
-   debug_module
+   debug_module_serv
      (
 		.clk_i(wb_clk),
 		.rst_ni(!wb_rst),

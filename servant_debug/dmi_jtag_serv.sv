@@ -16,7 +16,7 @@
 *
 */
 
-module dmi_jtag #(
+module dmi_jtag_serv #(
   parameter logic [31:0] IdcodeValue = 32'h00000001
 ) (
   input  logic         clk_i,      // DMI Clock
@@ -221,10 +221,10 @@ module dmi_jtag #(
   // ---------
   // TAP
   // ---------
-  dmi_jtag_tap #(
+  dmi_jtag_tap_serv #(
     .IrLength (5),
     .IdcodeValue(IdcodeValue)
-  ) i_dmi_jtag_tap (
+  ) i_dmi_jtag_tap_serv (
     .tck_i,
     .tms_i,
     .trst_ni,
@@ -247,7 +247,7 @@ module dmi_jtag #(
   // ---------
   // CDC
   // ---------
-  dmi_cdc i_dmi_cdc (
+  dmi_cdc_serv i_dmi_cdc_serv (
     // JTAG side (master side)
     .tck_i,
     .trst_ni,
@@ -268,4 +268,4 @@ module dmi_jtag #(
     .core_dmi_valid_i  ( dmi_resp_valid_i )
   );
 
-endmodule : dmi_jtag
+endmodule : dmi_jtag_serv

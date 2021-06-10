@@ -16,7 +16,7 @@
 /// CONSTRAINT: Requires max_delay of min_period(src_clk_i, dst_clk_i) through
 /// the paths async_req, async_ack, async_data.
 /* verilator lint_off DECLFILENAME */
-module cdc_2phase #(
+module cdc_2phase_serv #(
   parameter type T = logic
 )(
   input  logic src_rst_ni,
@@ -38,7 +38,7 @@ module cdc_2phase #(
   (* dont_touch = "true" *) T async_data;
 
   // The sender in the source domain.
-  cdc_2phase_src #(.T(T)) i_src (
+  cdc_2phase_src_serv #(.T(T)) i_src (
     .rst_ni       ( src_rst_ni  ),
     .clk_i        ( src_clk_i   ),
     .data_i       ( src_data_i  ),
@@ -50,7 +50,7 @@ module cdc_2phase #(
   );
 
   // The receiver in the destination domain.
-  cdc_2phase_dst #(.T(T)) i_dst (
+  cdc_2phase_dst_serv #(.T(T)) i_dst (
     .rst_ni       ( dst_rst_ni  ),
     .clk_i        ( dst_clk_i   ),
     .data_o       ( dst_data_o  ),
@@ -65,7 +65,7 @@ endmodule
 
 
 /// Half of the two-phase clock domain crossing located in the source domain.
-module cdc_2phase_src #(
+module cdc_2phase_src_serv #(
   parameter type T = logic
 )(
   input  logic rst_ni,
@@ -115,7 +115,7 @@ endmodule
 
 /// Half of the two-phase clock domain crossing located in the destination
 /// domain.
-module cdc_2phase_dst #(
+module cdc_2phase_dst_serv #(
   parameter type T = logic
 )(
   input  logic rst_ni,

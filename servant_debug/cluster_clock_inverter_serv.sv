@@ -8,7 +8,7 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-module cluster_clock_inverter
+module cluster_clock_inverter_serv
 (
     input  logic clk_i,
     output logic clk_o

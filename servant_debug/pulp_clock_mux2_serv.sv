@@ -8,7 +8,7 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-module pulp_clock_mux2
+module pulp_clock_mux2_serv
 (
     input  logic clk0_i,
     input  logic clk1_i,

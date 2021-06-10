@@ -17,7 +17,7 @@
 *              SW infrastructure re-use. As of version 0.13
 */
 
-module dm_top #(
+module dm_top_serv #(
   parameter int unsigned        NrHarts          = 1,
   parameter int unsigned        BusWidth         = 32,
   parameter int unsigned        DmBaseAddress    = 'h1000, // default to non-zero page
@@ -98,7 +98,7 @@ module dm_top #(
   logic [2:0]                       sberror;
 
 
-  dm_csrs #(
+  dm_csrs_serv #(
     .NrHarts(NrHarts),
     .BusWidth(BusWidth),
     .SelectableHarts(SelectableHarts)
@@ -149,10 +149,10 @@ module dm_top #(
     .sberror_i               ( sberror               )
   );
 
-  dm_sba #(
+  dm_sba_serv #(
     .BusWidth(BusWidth),
     .ReadByteEnable(ReadByteEnable)
-  ) i_dm_sba (
+  ) i_dm_sba_serv (
     .clk_i,
     .rst_ni,
     .dmactive_i              ( dmactive_o            ),
@@ -183,12 +183,12 @@ module dm_top #(
     .sberror_o               ( sberror               )
   );
 
-  dm_mem #(
+  dm_mem_serv #(
     .NrHarts(NrHarts),
     .BusWidth(BusWidth),
     .SelectableHarts(SelectableHarts),
     .DmBaseAddress(DmBaseAddress)
-  ) i_dm_mem (
+  ) i_dm_mem_serv (
     .clk_i,
     .rst_ni,
     .debug_req_o,
@@ -215,4 +215,4 @@ module dm_top #(
     .rdata_o                 ( slave_rdata_o         )
   );
 
-endmodule : dm_top
+endmodule : dm_top_serv
