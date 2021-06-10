@@ -41,11 +41,11 @@ filesets:
       - servant/servant_gpio.v
       - servant_debug/servant_arbiter.v
       - servant_debug/servant_mux.v
-      - servant_debug/dm_pkg.sv
+      - servant_debug/dm_pkg_serv.sv
       - servant_debug/dm_sba.sv
       - servant_debug/dm_mem.sv
-      - servant_debug/dm_csrs.sv
-      - servant_debug/dmi_cdc.sv
+      - servant_debug/dm_csrs_serv.sv
+      - servant_debug/dmi_cdc_serv.sv
       - servant_debug/dmi_jtag_tap.sv
       - servant_debug/dmi_jtag.sv
       - servant_debug/dm_top.sv

@@ -1,4 +1,4 @@
-module dm_wrapper #(
+module dm_wrapper_serv #(
   parameter int unsigned        NrHarts          = 1,
   parameter int unsigned        BusWidth         = 32,
   parameter int unsigned        DmBaseAddress    = 'h1000, // default to non-zero page
@@ -58,7 +58,7 @@ always @(posedge clk_i)
 // ---------------
 // Debug Module
 // ---------------
-dmi_jtag i_dmi_jtag (
+dmi_jtag_serv i_dmi_jtag_serv (
     .clk_i                (clk_i),
     .rst_ni               (rst_ni),
     .dmi_rst_no           (                      ), // keep open
@@ -77,13 +77,13 @@ dmi_jtag i_dmi_jtag (
     .tdo_oe_o             (        )
 );
 
-dm_top #(
+dm_top_serv #(
 		.NrHarts (1),
        .BusWidth (32),
        .DmBaseAddress ('h1000),
        .SelectableHarts (1'b1),
        .ReadByteEnable (1)
-) i_dm_top (
+) i_dm_top_serv (
     .clk_i            (clk_i),
     .rst_ni           (rst_ni), 
     .testmode_i       (testmode_i),
@@ -115,4 +115,4 @@ dm_top #(
     .dmi_resp_o       ( debug_resp        )
 );
 
-endmodule : dm_wrapper
+endmodule : dm_wrapper_serv

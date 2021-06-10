@@ -8,7 +8,7 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * File:   dmi_jtag_tap.sv
+ * File:   dmi_jtag_tap_serv.sv
  * Author: Florian Zaruba <zarubaf@iis.ee.ethz.ch>
  * Date:   19.7.2018
  *
@@ -16,7 +16,7 @@
  *
  */
 
-module dmi_jtag_tap #(
+module dmi_jtag_tap_serv #(
   parameter int unsigned IrLength = 5,
   // JTAG IDCODE Value
   parameter logic [31:0] IdcodeValue = 32'h00000001
@@ -218,12 +218,12 @@ module dmi_jtag_tap #(
   // ----------------
   logic tck_n, tck_ni;
 
-  cluster_clock_inverter i_tck_inv (
+  cluster_clock_inverter_serv i_tck_inv_serv (
     .clk_i ( tck_i  ),
     .clk_o ( tck_ni )
   );
 
-  pulp_clock_mux2 i_dft_tck_mux (
+  pulp_clock_mux2_serv i_dft_tck_mux_serv (
     .clk0_i    ( tck_ni     ),
     .clk1_i    ( tck_i      ), // bypass the inverted clock for testing
     .clk_sel_i ( testmode_i ),
@@ -346,4 +346,4 @@ module dmi_jtag_tap #(
     end
   end
 
-endmodule : dmi_jtag_tap
+endmodule : dmi_jtag_tap_serv

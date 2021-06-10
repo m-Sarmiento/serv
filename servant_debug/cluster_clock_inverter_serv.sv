@@ -8,20 +8,12 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-module pulp_clock_mux2
+module cluster_clock_inverter_serv
 (
-    input  logic clk0_i,
-    input  logic clk1_i,
-    input  logic clk_sel_i,
+    input  logic clk_i,
     output logic clk_o
   );
 
-  always_comb
-  begin
-    if (clk_sel_i == 1'b0)
-      clk_o = clk0_i;
-    else
-      clk_o = clk1_i;
-  end
+  assign clk_o = ~clk_i;
 
 endmodule

@@ -15,7 +15,7 @@
 * Description: System Bus Access Module
 *
 */
-module dm_sba #(
+module dm_sba_serv #(
   parameter int unsigned BusWidth = 32,
   parameter bit          ReadByteEnable = 1
 ) (
@@ -167,4 +167,4 @@ module dm_sba #(
   assign sbdata_valid_o  = master_r_valid_i;
   assign sbdata_o        = master_r_rdata_i[BusWidth-1:0];
 
-endmodule : dm_sba
+endmodule : dm_sba_serv

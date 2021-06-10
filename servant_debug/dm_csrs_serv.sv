@@ -8,14 +8,14 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * File:  dm_csrs.sv
+ * File:  dm_csrs_serv.sv
  * Author: Florian Zaruba <zarubaf@iis.ee.ethz.ch>
  * Date:   30.6.2018
  *
  * Description: Debug CSRs. Communication over Debug Transport Module (DTM)
  */
 
-module dm_csrs #(
+module dm_csrs_serv #(
   parameter int unsigned        NrHarts          = 1,
   parameter int unsigned        BusWidth         = 32,
   parameter logic [NrHarts-1:0] SelectableHarts  = {NrHarts{1'b1}}
@@ -560,7 +560,7 @@ module dm_csrs #(
   assign ndmreset_o = dmcontrol_q.ndmreset;
 
   // response FIFO
-  fifo_v2 #(
+  fifo_v2_serv #(
     .dtype            ( logic [31:0]         ),
     .DEPTH            ( 2                    )
   ) i_fifo (
@@ -635,4 +635,4 @@ module dm_csrs #(
     end
   end
 
-endmodule : dm_csrs
+endmodule : dm_csrs_serv
