@@ -1,4 +1,4 @@
-module spi #(parameter outputs = 9, parameter inputs = 5)( //max 255
+module spi_serv #(parameter outputs = 9, parameter inputs = 5)( //max 255
     input  wire i_sck,
     input  wire i_copi,
     output wire o_cipo,

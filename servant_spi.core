@@ -35,9 +35,9 @@ filesets:
       -  "tool_quartus? (servant/servant_ram_quartus.sv)" : {file_type : systemVerilogSource}
       - "!tool_quartus? (servant/servant_ram.v)"
       - servant_spi/servant.v
-      - servant_spi/spi.v
-      - servant_spi/fsm.v
-      - servant_spi/spi_slave.v
+      - servant_spi/spi_serv.v
+      - servant_spi/fsm_serv.v
+      - servant_spi/spi_slave_serv.v
     file_type : verilogSource
     depend : [serv]
 

@@ -1,4 +1,4 @@
-module fsm
+module fsm_serv
 (
 input wire clk, 
 input wire rst, 

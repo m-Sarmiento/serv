@@ -1,4 +1,4 @@
-module spi_slave
+module spi_slave_serv
      (
       input wire 	 clk,
       output wire [31:0] i_wb_cpu_spi_adr,
@@ -67,7 +67,7 @@ module spi_slave
       assign spi_in = {data,5'd0,status};
       assign pulse_start = spi_out[2] &  ~start;
 
-      fsm fsm
+      fsm_serv fsm_serv
 	(
 	.clk(clk), 
 	.rst(spi_reset), 

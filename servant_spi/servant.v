@@ -94,7 +94,7 @@ module servant
     );
 
 // SPI init
-   spi_slave spi_slave
+   spi_slave_serv spi_slave
      (.clk(wb_clk),
       .i_wb_cpu_spi_adr (wb_spi_adr),
       .i_wb_cpu_spi_dat (wb_spi_dat),
