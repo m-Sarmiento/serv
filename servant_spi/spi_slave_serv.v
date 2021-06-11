@@ -57,7 +57,7 @@ module spi_slave_serv
                status <= 3'h0;
           end else begin
                status <={is_busy, system_reset,reset_cpu};
-               if (enable == 1 && we == 0) 
+               if (o_wb_cpu_spi_ack == 1 && we == 0) 
                begin
                data <= o_wb_cpu_spi_rdt;
                end
