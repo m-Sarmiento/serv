@@ -41,7 +41,7 @@ filesets:
       - servant/servant_gpio.v
       - servant_debug/servant_arbiter.v
       - servant_debug/servant_mux.v
-      - servant_debug/dm_pkg_serv.sv
+      - servant_debug/dm_pkg.sv
       - servant_debug/dm_sba.sv
       - servant_debug/dm_mem.sv
       - servant_debug/dm_csrs_serv.sv

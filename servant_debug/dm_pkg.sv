@@ -8,7 +8,7 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  *
- * File:   dm_pkg_serv.sv
+ * File:   dm_pkg.sv
  * Author: Florian Zaruba <zarubaf@iis.ee.ethz.ch>
  * Date:   30.6.2018
  *
@@ -16,13 +16,13 @@
  *
  */
 
-package dm_serv;
+package dm;
   localparam logic [3:0] DbgVersion013 = 4'h2;
   // size of program buffer in junks of 32-bit words
   localparam logic [4:0] ProgBufSize   = 5'h8;
 
   // amount of data count registers implemented
-  localparam logic [3:0] DataCount     = 4'h2;
+  localparam logic [3:0] DataCount     = 4'h4;
 
   // address to which a hart should jump when it was requested to halt
   localparam logic [63:0] HaltAddress = 64'h800;
@@ -433,4 +433,4 @@ package dm_serv;
     return 32'h00000000;
   endfunction
 
-endpackage : dm_serv
+endpackage : dm
