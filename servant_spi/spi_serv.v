@@ -73,9 +73,8 @@ module spi_serv #(parameter outputs = 9, parameter inputs = 5)( //max 255
     assign en_o = we ? (1 << addr):{outputs{1'b0}};
     assign en_i = re ?(1 <<  addr):{inputs{1'b0}};
     
-    `ifndef VERILATOR
-    	assign o_cipo = (i_cs== 1'b1 || i_nrst == 1'b0 )? 1'bz : copi_buffer[23]; 
-    `else
-    	assign o_cipo = (i_cs== 1'b1 || i_nrst == 1'b0 )? 1'b0 : copi_buffer[23];  //simulation on verilator cant drive z state
-    `endif
+    // TODO: Do not use a tri-state here
+    // NOTE: Is probable that some PAD can use it. Export better a control signal
+    // NOTE: The control was assigned to (i_cs== 1'b1 || i_nrst == 1'b0 )
+    assign o_cipo = copi_buffer[23];
 endmodule
